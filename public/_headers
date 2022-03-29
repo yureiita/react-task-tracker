@@ -6,6 +6,6 @@
   X-Robots-Tag: noindex
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), ambient-light-sensor=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), speaker=(), usb=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' https:; media-src 'self' https:; script-src 'self' static.cloudflareinsights.com; connect-src 'self' cloudflareinsights.com; font-src 'self' fonts.gstatic.com; style-src 'self' fonts.googleapis.com; frame-ancestors 'none'; report-uri https://halimdaud.report-uri.com/r/d/csp/enforce https://halimdaud.report-uri.com/r/d/csp/reportOnly; report-to default;
+  Content-Security-Policy: default-src 'self'; img-src 'self' https:; media-src 'self' https:; script-src 'self' static.cloudflareinsights.com; connect-src 'self' cloudflareinsights.com restdb.io; font-src 'self' fonts.gstatic.com; style-src 'self' fonts.googleapis.com; frame-ancestors 'none'; report-uri https://halimdaud.report-uri.com/r/d/csp/enforce https://halimdaud.report-uri.com/r/d/csp/reportOnly; report-to default;
   Report-To: {"group":"default","max_age":31536000,"endpoints":[{"url":"https://halimdaud.report-uri.com/a/d/g"}],"include_subdomains":true}
   NEL: {"report_to":"default","max_age":31536000,"include_subdomains":true}
