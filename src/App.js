@@ -29,16 +29,16 @@ const App = () => {
   }
 
   // Fetch Task
-  const fetchTask = async (id) => {
-    const res = await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
-      headers: {
-        'x-apikey': '6242f60967937c128d7c92d8'
-      }
-    });
-    const data = await res.json();
+  // const fetchTask = async (id) => {
+  //   const res = await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
+  //     headers: {
+  //       'x-apikey': '6242f60967937c128d7c92d8'
+  //     }
+  //   });
+  //   const data = await res.json();
 
-    return data;
-  }
+  //   return data;
+  // }
 
   // Add Task
   const addTask = async (task) => {
@@ -74,7 +74,9 @@ const App = () => {
 
   // Toggle Reminder
   const toggleReminder = async (id) => {
-    const taskToToggle = await fetchTask(id);
+    const taskToToggle = tasks.find(function (el) {
+      return el._id === id;
+    });
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
     const res = await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
