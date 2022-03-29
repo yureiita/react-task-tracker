@@ -74,13 +74,11 @@ const App = () => {
 
   // Toggle Reminder
   const toggleReminder = async (id) => {
-    const taskToToggle = tasks.find(function (el) {
-      return el._id === id;
-    });
-    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
+    const taskToToggle = tasks.find((el) => el._id === id);
+    const updTask = { reminder: !taskToToggle.reminder };
 
     const res = await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
         'x-apikey': '6242f60967937c128d7c92d8'
