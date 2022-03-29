@@ -18,7 +18,11 @@ const App = () => {
 
   // Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks');
+    const res = await fetch('https://tasksdb-8787.restdb.io/rest/tasks', {
+      headers: {
+        'x-apikey': '6242f60967937c128d7c92d8'
+      }
+    });
     const data = await res.json();
 
     return data;
@@ -26,7 +30,11 @@ const App = () => {
 
   // Fetch Task
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const res = await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
+      headers: {
+        'x-apikey': '6242f60967937c128d7c92d8'
+      }
+    });
     const data = await res.json();
 
     return data;
@@ -34,10 +42,11 @@ const App = () => {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch('http://localhost:5000/tasks', {
+    const res = await fetch('https://tasksdb-8787.restdb.io/rest/tasks', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'x-apikey': '6242f60967937c128d7c92d8'
       },
       body: JSON.stringify(task)
     })
@@ -53,11 +62,14 @@ const App = () => {
 
   // Delete Task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'DELETE'
+    await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'x-apikey': '6242f60967937c128d7c92d8'
+      }
     })
 
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks(tasks.filter((task) => task._id !== id));
   }
 
   // Toggle Reminder
@@ -65,17 +77,18 @@ const App = () => {
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
       method: 'PUT',
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'x-apikey': '6242f60967937c128d7c92d8'
       },
       body: JSON.stringify(updTask)
     })
 
     const data = await res.json();
 
-    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: data.reminder } : task));
+    setTasks(tasks.map((task) => task._id === id ? { ...task, reminder: data.reminder } : task));
   }
 
   return (
