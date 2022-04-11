@@ -77,7 +77,7 @@ const App = () => {
     const updTask = { reminder: !taskToToggle.reminder };
 
     const res = await fetch(`https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/toggleReminder?id=${id.$oid}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
