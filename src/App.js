@@ -18,9 +18,9 @@ const App = () => {
 
   // Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch('https://tasksdb-8787.restdb.io/rest/tasks', {
+    const res = await fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/getTasks', {
       headers: {
-        'x-apikey': '6242f60967937c128d7c92d8'
+        'Content-Type': 'application/json'
       }
     });
     const data = await res.json();
@@ -42,11 +42,10 @@ const App = () => {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch('https://tasksdb-8787.restdb.io/rest/tasks', {
+    const res = await fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/addTask', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json',
-        'x-apikey': '6242f60967937c128d7c92d8'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(task)
     })
@@ -62,10 +61,10 @@ const App = () => {
 
   // Delete Task
   const deleteTask = async (id) => {
-    await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
+    await fetch(`https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/deleteTask?id=${id.$oid}`, {
       method: 'DELETE',
       headers: {
-        'x-apikey': '6242f60967937c128d7c92d8'
+        'Content-Type': 'application/json'
       }
     })
 
@@ -77,11 +76,10 @@ const App = () => {
     const taskToToggle = tasks.find((el) => el._id === id);
     const updTask = { reminder: !taskToToggle.reminder };
 
-    const res = await fetch(`https://tasksdb-8787.restdb.io/rest/tasks/${id}`, {
+    const res = await fetch(`https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/toggleReminder?id=${id.$oid}`, {
       method: 'PATCH',
       headers: {
-        'Content-type': 'application/json',
-        'x-apikey': '6242f60967937c128d7c92d8'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(updTask)
     })
