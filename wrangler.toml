@@ -6,7 +6,8 @@ pages_build_output_dir = "build"
 [env.production.vars]
 NODE_VERSION = "24.13.0"
 
-[[d1_databases]]
+[env.production]
+[[env.production.d1_databases]]
 binding = "TASK_DB"
 database_name = "task-tracker"
 database_id = "45db1dce-f87b-4a63-be1a-bf090f7c9935"
