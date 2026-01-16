@@ -6,4 +6,4 @@
   X-Robots-Tag: noindex
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), ambient-light-sensor=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), speaker=(), usb=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' https:; media-src 'self' https:; script-src 'self' static.cloudflareinsights.com; connect-src 'self' cloudflareinsights.com; font-src 'self' fonts.gstatic.com; style-src 'self' fonts.googleapis.com; frame-ancestors 'none';
+  Content-Security-Policy: upgrade-insecure-requests;
