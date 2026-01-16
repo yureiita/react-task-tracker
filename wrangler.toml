@@ -1,0 +1,9 @@
+name = "react-task-tracker"
+compatibility_date = "2024-01-01"
+
+pages_build_output_dir = "build"
+
+[[d1_databases]]
+binding = "TASK_DB"
+database_name = "task-tracker"
+database_id = "45db1dce-f87b-4a63-be1a-bf090f7c9935"

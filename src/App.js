@@ -18,7 +18,7 @@ const App = () => {
 
   // Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/getTasks', {
+    const res = await fetch('/api/tasks', {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -42,7 +42,7 @@ const App = () => {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/addTask', {
+    const res = await fetch('/api/tasks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,30 +53,26 @@ const App = () => {
     const data = await res.json();
 
     setTasks([...tasks, data]);
-
-    // const id = Math.floor(Math.random() * 10000) + 1;
-    // const newTask = { id, ...task };
-    // setTasks([...tasks, newTask]);
   }
 
   // Delete Task
   const deleteTask = async (id) => {
-    await fetch(`https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/deleteTask?id=${id.$oid}`, {
+    await fetch(`/api/tasks/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
     })
 
-    setTasks(tasks.filter((task) => task._id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   }
 
   // Toggle Reminder
   const toggleReminder = async (id) => {
-    const taskToToggle = tasks.find((el) => el._id === id);
+    const taskToToggle = tasks.find((el) => el.id === id);
     const updTask = { reminder: !taskToToggle.reminder };
 
-    const res = await fetch(`https://ap-southeast-1.aws.data.mongodb-api.com/app/application-0-hzbbu/endpoint/tasks/toggleReminder?id=${id.$oid}`, {
+    const res = await fetch(`/api/tasks/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -86,7 +82,7 @@ const App = () => {
 
     const data = await res.json();
 
-    setTasks(tasks.map((task) => task._id === id ? { ...task, reminder: data.reminder } : task));
+    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: data.reminder } : task));
   }
 
   return (
